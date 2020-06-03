@@ -48,34 +48,20 @@ internal class AsyncProfilerHandler(val profilerConfig: ProfilerConfig) : Profil
         executeMethod.invoke(asyncProfiler, command)
     }
 
-<<<<<<< HEAD
-    override fun startProfiling(activityName: String, config: ProfilerConfig) {
-        try {
-            profilingOptions = config.options
-            execute(AsyncProfilerCommandBuilder.buildStartCommand(config.options))
-=======
     override fun startProfiling() {
         try {
             profilingOptions = profilerConfig.options
             execute(AsyncProfilerCommandBuilder.buildStartCommand(profilerConfig.options))
->>>>>>> (PerformanceTest) Profile configuration changed, added support for typing per inspection tests
             profilingStarted = true
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
     }
 
-<<<<<<< HEAD
-    override fun stopProfiling(snapshotsPath: String, activityName: String, config: ProfilerConfig) {
-        val combinedOptions = ArrayList(config.options)
-        val commandBuilder = AsyncProfilerCommandBuilder(snapshotsPath)
-        val name = activityName.replace(' ', '_').replace('/', '_')
-=======
     override fun stopProfiling(attempt: Int) {
         val combinedOptions = ArrayList(profilerConfig.options)
         val commandBuilder = AsyncProfilerCommandBuilder(profilerConfig.path)
         val name = "${profilerConfig.name}-$attempt".replace(' ', '_').replace('/', '_')
->>>>>>> (PerformanceTest) Profile configuration changed, added support for typing per inspection tests
         val stopAndDumpCommands = commandBuilder.buildStopAndDumpCommands(name, combinedOptions)
         for (stopCommand in stopAndDumpCommands) {
             execute(stopCommand)

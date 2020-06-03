@@ -33,8 +33,7 @@ class AHeavyInspectionsPerformanceTest : UsefulTestCase() {
         "UnusedSymbol",
         "MemberVisibilityCanBePrivate"
     )
-    val passesToIgnore =
-        ((1 until Pass.LOCAL_INSPECTIONS) + (Pass.LOCAL_INSPECTIONS + 1 until Pass.WHOLE_FILE_LOCAL_INSPECTIONS) + (Pass.WHOLE_FILE_LOCAL_INSPECTIONS + 1 until 100)).toIntArray()
+    val passesToIgnore = ((1 until 100) - Pass.LOCAL_INSPECTIONS - Pass.WHOLE_FILE_LOCAL_INSPECTIONS).toIntArray()
 
     fun testLocalInspection() {
         suite {
@@ -98,7 +97,7 @@ class AHeavyInspectionsPerformanceTest : UsefulTestCase() {
             config.profilerConfig.tracing = true
             app {
                 project(UNUSED_AUTO) {
-                    for (inspection in listOfInspections.sliceArray(0..1)) {
+                    for (inspection in listOfInspections.sliceArray(0 until 1)) {
                         enableSingleInspection(inspection)
                         val listOfFiles = listOf("src/main/kotlin/org/test/test.kt")
                         for (file in listOfFiles) {

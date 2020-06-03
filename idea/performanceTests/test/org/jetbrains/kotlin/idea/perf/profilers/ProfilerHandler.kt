@@ -11,15 +11,9 @@ import org.jetbrains.kotlin.idea.perf.util.logMessage
 import java.nio.file.Path
 
 interface ProfilerHandler {
-<<<<<<< HEAD
-    fun startProfiling(activityName: String, config: ProfilerConfig)
-
-    fun stopProfiling(snapshotsPath: String, activityName: String, config: ProfilerConfig)
-=======
     fun startProfiling()
 
     fun stopProfiling(attempt: Int)
->>>>>>> (PerformanceTest) Profile configuration changed, added support for typing per inspection tests
 
     companion object {
         private var instance: ProfilerHandler? = null
@@ -49,15 +43,9 @@ interface ProfilerHandler {
 }
 
 object DummyProfilerHandler : ProfilerHandler {
-<<<<<<< HEAD
-    override fun startProfiling(activityName: String, config: ProfilerConfig) {}
-
-    override fun stopProfiling(snapshotsPath: String, activityName: String, config: ProfilerConfig) {}
-=======
     override fun startProfiling() {}
 
     override fun stopProfiling(attempt: Int) {}
->>>>>>> (PerformanceTest) Profile configuration changed, added support for typing per inspection tests
 }
 
 internal fun <T> doOrLog(message: String, block: () -> T?): T? {

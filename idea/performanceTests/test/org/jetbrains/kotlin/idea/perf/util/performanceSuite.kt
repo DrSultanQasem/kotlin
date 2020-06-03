@@ -139,10 +139,6 @@ class PerformanceSuite {
                 tearDown {
                     after?.invoke()
                 }
-<<<<<<< HEAD
-                profilerEnabled(config.profile)
-=======
->>>>>>> (PerformanceTest) Profile configuration changed, added support for typing per inspection tests
                 profilerConfig(config.profilerConfig)
             }
             return value
